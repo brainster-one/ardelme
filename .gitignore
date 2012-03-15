@@ -3,3 +3,7 @@
 obj
 bin
 TestResults
+Binaries/*.dll
+Binaries/*.pdb
+Binaries/*/*.dll
+Binaries/*/*.pdb
