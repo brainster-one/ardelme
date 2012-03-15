@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ardelme", "Ardelme\Ardelme.csproj", "{DB2E9859-CE5E-484C-9C14-10C7A7E87F5A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ardelme", "Ardelme.csproj", "{DB2E9859-CE5E-484C-9C14-10C7A7E87F5A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ardelme.Silverlight", "Ardelme\Ardelme.Silverlight.csproj", "{C2B345E5-490E-415A-920B-792C45C95255}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ardelme.Silverlight", "Ardelme.Silverlight.csproj", "{C2B345E5-490E-415A-920B-792C45C95255}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
