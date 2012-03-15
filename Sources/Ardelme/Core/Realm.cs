@@ -8,9 +8,6 @@ namespace Ardelme.Core {
 	public sealed class Realm : IRealm {
 		/// <summary>Initializes a new instance of the Realm class.</summary>
 		public Realm() {
-			for (var i = 1; i < Int16.MaxValue; ++i) {
-				_entitiesId.Enqueue(i);
-			}
 		}
 
 		/// <summary>Initializes a new instance of the Realm class with specified behavior.</summary>
@@ -95,17 +92,16 @@ namespace Ardelme.Core {
 
 		/// <summary>New entity added to realm.</summary>
 		/// <param name="entity">Entity.</param>
-		public void AddEntity(IEntity entity) {
+		public void AddEntity(object entity) {
 			if (_entites.Contains(entity)) throw new InvalidOperationException("This entity already exist in realm: " + entity.GetType());
 
-			entity.Id = _entitiesId.Dequeue();
 			_entites.Add(entity);
 			_behaviors.ForEach(x => x.AddEntity(this, entity));
 		}
 
 		/// <summary>Entity's state modified.</summary>
 		/// <param name="entity">Entity.</param>
-		public void ModifyEntity(IEntity entity) {
+		public void ModifyEntity(object entity) {
 			if (!_entites.Contains(entity)) throw new InvalidOperationException("Entity does not exist in realm.");
 
 			_behaviors.ForEach(x => x.ModifyEntity(this, entity));
@@ -113,15 +109,14 @@ namespace Ardelme.Core {
 
 		/// <summary>Entity removed from realm.</summary>
 		/// <param name="entity">Entity.</param>
-		public void RemoveEntity(IEntity entity) {
+		public void RemoveEntity(object entity) {
 			if (!_entites.Contains(entity)) throw new InvalidOperationException("Entity does not exist in realm.");
 
-			_entitiesId.Enqueue(entity.Id);
 			_entites.Remove(entity);
 			_behaviors.ForEach(x => x.RemoveEntity(this, entity));
 		}
 
-		public IEnumerable<IEntity> Entities {
+		public IEnumerable<object> Entities {
 			get { return _entites.AsReadOnly(); }
 		}
 
@@ -129,9 +124,6 @@ namespace Ardelme.Core {
 		readonly List<IRealmBehavior> _behaviors = new List<IRealmBehavior>();
 
 		/// <summary>Entities.</summary>
-		readonly List<IEntity> _entites = new List<IEntity>();
-
-		/// <summary>Entity Ids.</summary>
-		readonly Queue<int> _entitiesId = new Queue<int>();
+		readonly List<object> _entites = new List<object>();
 	}
 }

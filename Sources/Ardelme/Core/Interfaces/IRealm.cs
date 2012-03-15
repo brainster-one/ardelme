@@ -52,17 +52,17 @@ namespace Ardelme.Core {
 
 		/// <summary>New entity added to realm.</summary>
 		/// <param name="entity">Entity.</param>
-		void AddEntity(IEntity entity);
+		void AddEntity(object entity);
 
 		/// <summary>Entity's state modified.</summary>
 		/// <param name="entity">Entity.</param>
-		void ModifyEntity(IEntity entity);
+		void ModifyEntity(object entity);
 
 		/// <summary>Entity removed from realm.</summary>
 		/// <param name="entity">Entity.</param>
-		void RemoveEntity(IEntity entity);
+		void RemoveEntity(object entity);
 
 		/// <summary>Gets list of entities.</summary>
-		IEnumerable<IEntity> Entities { get; }
+		IEnumerable<object> Entities { get; }
 	}
 }

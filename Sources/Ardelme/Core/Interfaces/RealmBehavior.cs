@@ -40,16 +40,16 @@ namespace Ardelme.Core {
 		/// <summary>New antity added.</summary>
 		/// <param name="realm">Realm.</param>
 		/// <param name="entity">Entity.</param>
-		public virtual void AddEntity(IRealm realm, IEntity entity) { }
+		public virtual void AddEntity(IRealm realm, object entity) { }
 
 		/// <summary>Entity modified.</summary>
 		/// <param name="realm">Realm.</param>
 		/// <param name="entity">Entity.</param>
-		public virtual void ModifyEntity(IRealm realm, IEntity entity) { }
+		public virtual void ModifyEntity(IRealm realm, object entity) { }
 
 		/// <summary>Entity removed.</summary>
 		/// <param name="realm">Realm.</param>
 		/// <param name="entity">Entity.</param>
-		public virtual void RemoveEntity(IRealm realm, IEntity entity) { }
+		public virtual void RemoveEntity(IRealm realm, object entity) { }
 	}
 }

@@ -21,13 +21,13 @@ namespace Ardelme.Behaviors {
 		/// <summary>Initializes a new instance of the ModifiedEntityStatePair class.</summary>
 		/// <param name="entity">Entity.</param>
 		/// <param name="state">State.</param>
-		public ModifiedEntityStatePair(IEntity entity, ModifiedEntityState state) {
+		public ModifiedEntityStatePair(object entity, ModifiedEntityState state) {
 			Entity = entity;
 			State = state;
 		}
 
 		/// <summary>Gets entity.</summary>
-		public IEntity Entity { get; private set; }
+		public object Entity { get; private set; }
 
 		/// <summary>Gets modification state.</summary>
 		public ModifiedEntityState State { get; private set; }
@@ -38,7 +38,7 @@ namespace Ardelme.Behaviors {
 		/// <summary>New antity added.</summary>
 		/// <param name="realm">Realm.</param>
 		/// <param name="entity">Entity.</param>
-		public override void AddEntity(IRealm realm, IEntity entity) {
+		public override void AddEntity(IRealm realm, object entity) {
 			lock (_modified) {
 				_modified[entity] = ModifiedEntityState.Added;
 			} 
@@ -47,7 +47,7 @@ namespace Ardelme.Behaviors {
 		/// <summary>Entity modified.</summary>
 		/// <param name="realm">Realm.</param>
 		/// <param name="entity">Entity.</param>
-		public override void ModifyEntity(IRealm realm, IEntity entity) {
+		public override void ModifyEntity(IRealm realm, object entity) {
 			lock (_modified) {
 				if (!_modified.Any(x => x.Key == entity && x.Value == ModifiedEntityState.Added))
 					_modified[entity] = ModifiedEntityState.Modified;
@@ -59,7 +59,7 @@ namespace Ardelme.Behaviors {
 		/// <param name="entity">Entity.</param>
 		// TODO Не синхронизировать объекты которые прошли стадии Added/Changed/Removed за один игровой такт.
 		// Ибо объект уже удалён, а на клиентах он ещё не был создан.
-		public override void RemoveEntity(IRealm realm, IEntity entity) {
+		public override void RemoveEntity(IRealm realm, object entity) {
 			lock(_modified) { _modified[entity] = ModifiedEntityState.Removed; }
 		}
 
@@ -74,6 +74,6 @@ namespace Ardelme.Behaviors {
 		}
 
 		/// <summary>Events.</summary>
-		readonly Dictionary<IEntity, ModifiedEntityState> _modified = new Dictionary<IEntity, ModifiedEntityState>();
+		readonly Dictionary<object, ModifiedEntityState> _modified = new Dictionary<object, ModifiedEntityState>();
 	}
 }

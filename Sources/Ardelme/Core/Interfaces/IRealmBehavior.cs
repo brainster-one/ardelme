@@ -40,16 +40,16 @@ namespace Ardelme.Core {
 		/// <summary>New entity added to realm.</summary>
 		/// <param name="realm">Realm.</param>
 		/// <param name="entity">Entity.</param>
-		void AddEntity(IRealm realm, IEntity entity);
+		void AddEntity(IRealm realm, object entity);
 
 		/// <summary>Entity's state modified.</summary>
 		/// <param name="realm">Realm.</param>
 		/// <param name="entity">Entity.</param>
-		void ModifyEntity(IRealm realm, IEntity entity);
+		void ModifyEntity(IRealm realm, object entity);
 
 		/// <summary>Entity removed from realm.</summary>
 		/// <param name="realm">Realm.</param>
 		/// <param name="entity">Entity.</param>
-		void RemoveEntity(IRealm realm, IEntity entity);
+		void RemoveEntity(IRealm realm, object entity);
 	}
 }

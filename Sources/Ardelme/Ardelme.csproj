@@ -33,19 +33,11 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Behaviors\FinishGameTimerRealmBehavior.cs" />
     <Compile Include="Behaviors\ModifiedEntitiesRealmBehavior.cs" />
     <Compile Include="Behaviors\RemoveInactivePlayersRealmBehavior.cs" />
-    <Compile Include="Class1.cs" />
-    <Compile Include="Core\Entity.cs" />
-    <Compile Include="Core\Interfaces\IEntity.cs" />
     <Compile Include="Core\Interfaces\IRealm.cs" />
     <Compile Include="Core\Interfaces\IRealmBehavior.cs" />
     <Compile Include="Core\Interfaces\RealmBehavior.cs" />
