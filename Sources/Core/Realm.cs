@@ -93,31 +93,34 @@ namespace Ardelme.Core {
 		/// <summary>New entity added to realm.</summary>
 		/// <param name="entity">Entity.</param>
 		public void AddEntity(object entity) {
-			if (_entites.Contains(entity)) throw new InvalidOperationException("This entity already exist in realm: " + entity.GetType());
-
-			_entites.Add(entity);
-			_behaviors.ForEach(x => x.AddEntity(this, entity));
+			lock (_entitiesLock) {
+				if (_entites.Contains(entity)) throw new InvalidOperationException("This entity already exist in realm: " + entity.GetType());
+				_entites.Add(entity);
+				_behaviors.ForEach(x => x.AddEntity(this, entity));
+			}
 		}
 
 		/// <summary>Entity's state modified.</summary>
 		/// <param name="entity">Entity.</param>
 		public void ModifyEntity(object entity) {
-			if (!_entites.Contains(entity)) throw new InvalidOperationException("Entity does not exist in realm.");
-
-			_behaviors.ForEach(x => x.ModifyEntity(this, entity));
+			lock (_entitiesLock) {
+				if (!_entites.Contains(entity)) throw new InvalidOperationException("Entity does not exist in realm.");
+				_behaviors.ForEach(x => x.ModifyEntity(this, entity));
+			}
 		}
 
 		/// <summary>Entity removed from realm.</summary>
 		/// <param name="entity">Entity.</param>
 		public void RemoveEntity(object entity) {
-			if (!_entites.Contains(entity)) throw new InvalidOperationException("Entity does not exist in realm.");
-
-			_entites.Remove(entity);
-			_behaviors.ForEach(x => x.RemoveEntity(this, entity));
+			lock (_entitiesLock) {
+				if (!_entites.Contains(entity)) throw new InvalidOperationException("Entity does not exist in realm.");
+				_entites.Remove(entity);
+				_behaviors.ForEach(x => x.RemoveEntity(this, entity));
+			}
 		}
 
 		public IEnumerable<object> Entities {
-			get { return _entites.AsReadOnly(); }
+			get { lock (_entitiesLock) { return _entites.AsReadOnly(); } }
 		}
 
 		/// <summary>Behaviors.</summary>
@@ -125,5 +128,7 @@ namespace Ardelme.Core {
 
 		/// <summary>Entities.</summary>
 		readonly List<object> _entites = new List<object>();
+
+		readonly object _entitiesLock = new object();
 	}
 }
