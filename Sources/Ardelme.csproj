@@ -38,6 +38,7 @@
     <Compile Include="Behaviors\FinishGameTimerRealmBehavior.cs" />
     <Compile Include="Behaviors\ModifiedEntitiesRealmBehavior.cs" />
     <Compile Include="Behaviors\RemoveInactivePlayersRealmBehavior.cs" />
+    <Compile Include="Core\InputState.cs" />
     <Compile Include="Core\Interfaces\IRealm.cs" />
     <Compile Include="Core\Interfaces\IRealmBehavior.cs" />
     <Compile Include="Core\Interfaces\RealmBehavior.cs" />

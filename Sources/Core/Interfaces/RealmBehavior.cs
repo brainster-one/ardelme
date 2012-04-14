@@ -7,6 +7,10 @@ namespace Ardelme.Core {
 		/// <param name="delta">Time passed since last update.</param>
 		public virtual void Update(IRealm realm, double delta) { }
 
+		/// <summary>Calls then realm started.</summary>
+		/// <param name="realm">Realm.</param>
+		public virtual void Start(IRealm realm) { }
+
 		/// <summary>Calls then realm finished.</summary>
 		/// <param name="realm">Realm.</param>
 		public virtual void Finish(IRealm realm) { }
@@ -34,8 +38,8 @@ namespace Ardelme.Core {
 		/// <summary>User's input data received.</summary>
 		/// <param name="realm">Realm.</param>
 		/// <param name="user">User.</param>
-		/// <param name="keys">Keys and mouse events.</param>
-		public virtual void Input(IRealm realm, User user, int[] keys) { }
+		/// <param name="state">Keys and mouse events.</param>
+		public virtual void Input(IRealm realm, User user, InputState state) { }
 
 		/// <summary>New antity added.</summary>
 		/// <param name="realm">Realm.</param>

@@ -7,6 +7,10 @@ namespace Ardelme.Core {
 		/// <param name="delta">Time passed since last update.</param>
 		void Update(IRealm realm, double delta);
 
+		/// <summary>On game started.</summary>
+		/// <param name="realm">Realm.</param>
+		void Start(IRealm realm);
+
 		/// <summary>On game finished.</summary>
 		/// <param name="realm">Realm.</param>
 		void Finish(IRealm realm);
@@ -34,8 +38,8 @@ namespace Ardelme.Core {
 		/// <summary>Users input data.</summary>
 		/// <param name="realm">Realm.</param>
 		/// <param name="user">User.</param>
-		/// <param name="keys">Input data.</param>
-		void Input(IRealm realm, User user, int[] keys);
+		/// <param name="state">Input data.</param>
+		void Input(IRealm realm, User user, InputState state);
 
 		/// <summary>New entity added to realm.</summary>
 		/// <param name="realm">Realm.</param>

@@ -47,8 +47,8 @@ namespace Ardelme.Core {
 
 		/// <summary>Users input data.</summary>
 		/// <param name="user">User.</param>
-		/// <param name="keys">Input data.</param>
-		void Input(User user, int[] keys);
+		/// <param name="state">Input data.</param>
+		void Input(User user, InputState state);
 
 		/// <summary>New entity added to realm.</summary>
 		/// <param name="entity">Entity.</param>

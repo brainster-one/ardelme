@@ -7,8 +7,7 @@ namespace Ardelme.Core {
 	/// <summary>Realm.</summary>
 	public sealed class Realm : IRealm {
 		/// <summary>Initializes a new instance of the Realm class.</summary>
-		public Realm() {
-		}
+		public Realm() { }
 
 		/// <summary>Initializes a new instance of the Realm class with specified behavior.</summary>
 		/// <param name="behavior">Realm behavior.</param>
@@ -50,6 +49,11 @@ namespace Ardelme.Core {
 			_behaviors.ForEach(x => x.Update(this, delta));
 		}
 
+		/// <summary>On game started.</summary>
+		public void Start() {
+			_behaviors.ForEach(x => x.Start(this));
+		}
+
 		/// <summary>On game finished.</summary>
 		public void Finish() {
 			_behaviors.ForEach(x => x.Finish(this));
@@ -70,6 +74,7 @@ namespace Ardelme.Core {
 
 		/// <summary>New user joined a game.</summary>
 		/// <param name="user">User.</param>
+		/// <param name="team">Team.</param>
 		/// <returns>Aceept user to the game?</returns>
 		public bool Join(User user, Team team) {
 			return _behaviors.Aggregate(true, (current, b) => current && b.Join(this, user, team));
@@ -85,9 +90,9 @@ namespace Ardelme.Core {
 
 		/// <summary>Users input data.</summary>
 		/// <param name="user">User.</param>
-		/// <param name="keys">Input data.</param>
-		public void Input(User user, int[] keys) {
-			_behaviors.ForEach(x => x.Input(this, user, keys));
+		/// <param name="state">Input data.</param>
+		public void Input(User user, InputState state) {
+			_behaviors.ForEach(x => x.Input(this, user, state));
 		}
 
 		/// <summary>New entity added to realm.</summary>
