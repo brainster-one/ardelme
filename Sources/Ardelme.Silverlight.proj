@@ -1,0 +1,28 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003"
+	ToolsVersion="4.0">
+
+	<PropertyGroup>
+		<OutputPath>..\Binaries\</OutputPath>
+		<OutputType>Library</OutputType>
+		<RootNamespace>Ardelme</RootNamespace>
+		<AssemblyName>Ardelme.Silverlight</AssemblyName>
+		<TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
+		<TargetFrameworkVersion>v5.0</TargetFrameworkVersion>
+		<SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
+		<SilverlightApplication>false</SilverlightApplication>
+		<DefineConstants>SILVERLIGHT</DefineConstants>
+		<NoStdLib>true</NoStdLib>
+		<NoConfig>true</NoConfig>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Reference Include="mscorlib" />
+		<Reference Include="system" />
+		<Reference Include="System.Core" />
+		<Reference Include="System.Net" />
+		
+		<Compile Include="**\*.cs" />
+	</ItemGroup>
+
+	<Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+</Project>

@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <version>0.0.11</version>
+    <authors>brainster</authors>
+    <owners />
+    <projectUrl>https://github.com/brainster-one/ardelme</projectUrl>
+    <id>Ardelme</id>
+    <title />
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Ardelme is a game library.</description>
+  </metadata>
+  <files>
+    <file src="..\..\Binaries\Ardelme.dll" target="lib\net40\Ardelme.dll" />
+    <file src="..\..\Binaries\Ardelme.dll" target="lib\sl5\Ardelme.Silverlight.dll" />
+  </files>
+</package>

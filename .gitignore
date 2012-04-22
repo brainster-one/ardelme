@@ -7,4 +7,5 @@ Binaries/*.dll
 Binaries/*.pdb
 Binaries/*/*.dll
 Binaries/*/*.pdb
+Packages/*.nupkg
 _ReSharper.Ardelme
